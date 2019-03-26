@@ -4,7 +4,7 @@ import base64
 import uuid
 import urllib
 
-from signxml import xmldsig
+from signxml import XMLVerifier
 from base64 import b64decode
 
 from datetime import datetime
@@ -49,7 +49,7 @@ class SAML_Response:
         authn_response = ""
 
         try:
-            xmldsig(strDecodedSAMLResponse).verify(x509_cert=cert)
+            XMLVerifier().verify(strDecodedSAMLResponse, x509_cert=cert)
             
             root = etree.fromstring(b64decode(strEncodedSAMLResponse))
             
