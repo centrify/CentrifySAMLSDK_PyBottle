@@ -1,1 +1,3 @@
 bottle<1
+lxml
+signxml
